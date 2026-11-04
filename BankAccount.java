@@ -62,9 +62,6 @@ class Bank {
 public class BankAccount {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        // int num = sc.nextInt();
-        // String name = sc.next();
-        // double balance = sc.nextDouble();
         Bank obj = new Bank(123, "bava", 40000);
         Bank obj1 = new Bank(456, "thara", 3000);
         obj.deposit(40000);
