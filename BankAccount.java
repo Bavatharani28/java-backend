@@ -2,16 +2,20 @@ import java.util.Scanner;
 
 class Bank {
     private int accountNumber;
-    String holderName;
+    private String holderName;
     private double balance;
 
     public Bank(int accountNumber, String holderName, double balance) {
         this.accountNumber = accountNumber;
-        if (holderName != "")
+        if (holderName != null && !holderName.trim().isEmpty())
             this.holderName = holderName;
         else
-            System.out.println("Invalid User Name");
-        this.balance = balance;
+            throw new IllegalArgumentException("Invalid User Name");
+        if (balance >= 0)
+            this.balance = balance;
+        else {
+            throw new IllegalArgumentException("Invalid initial balance");
+        }
     }
 
     public void deposit(double amount) {
@@ -23,7 +27,7 @@ class Bank {
     }
 
     public void withdraw(double amount) {
-        if (amount <= balance) {
+        if (amount > 0 && amount <= balance) {
             balance = balance - amount;
             System.out.println("withdraw success");
         } else {
@@ -32,8 +36,17 @@ class Bank {
     }
 
     public void transfer(Bank obj, double amt) {
-        obj.deposit(amt);
-        balance = balance - amt;
+        if (obj == null || obj == this) {
+            System.out.println("Invalid target account");
+            return;
+        }
+        if (amt > 0 && amt <= balance) {
+            balance = balance - amt;
+            obj.deposit(amt);
+            System.out.println("Tranfer successful");
+        } else {
+            System.out.println("Transfer rejected");
+        }
     }
 
     public double getBalance() {
