@@ -50,5 +50,6 @@ public class CarManagement {
         car1.displayCarDetails();
         eng1.displayEngineDetails();
         car1.startCar();
+        eng1.startEngine();
     }
 }
