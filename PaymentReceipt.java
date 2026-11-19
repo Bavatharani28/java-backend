@@ -18,12 +18,10 @@ class Receipt {
 public class PaymentReceipt {
     static void main(String args[]) {
         Receipt bill1 = new Receipt();
-        Receipt bill2 = new Receipt();
-        Receipt bill3 = new Receipt();
         bill1.printReceipt("Bavatharani");
         System.out.println();
-        bill2.printReceipt("Bavatharani", 50000.90);
+        bill1.printReceipt("Bavatharani", 50000.90);
         System.out.println();
-        bill3.printReceipt("Bavatharani", 80000.98, "Card");
+        bill1.printReceipt("Bavatharani", 80000.98, "Card");
     }
 }
